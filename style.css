@@ -232,3 +232,51 @@ footer{background:var(--clr-secondary);color:var(--white);padding:var(--sp-7) 0 
 /* ---------- 11. Accessibility ---------- */
 *:focus-visible{outline:2px solid var(--clr-primary);outline-offset:2px}
 .show-focus-outline *:focus{outline:2px solid var(--clr-primary);outline-offset:2px}
+/* ========================================
+   Breathing-Room Refinements – July 2025
+   ======================================== */
+
+/* 1. HERO — Tighter vertical footprint */
+.hero {
+  /* limit total height to half of viewport */
+  max-height: 55vh;
+
+  /* slimmer vertical padding that still scales */
+  padding-block: clamp(2rem, 6vh, 3.5rem);
+  margin-block: clamp(2rem, 5vh, 3rem);
+
+  /* make sure text never touches edges */
+  padding-inline: var(--sp-4);
+}
+
+/* readable but more compact headings */
+.hero h2     { font-size: var(--fs-600); margin-bottom: var(--sp-2); }
+.hero-subtitle {
+  font-size: var(--fs-200);
+  margin-bottom: var(--sp-4);
+}
+
+/* condensed stats row */
+.hero-stats  { gap: var(--sp-4); margin-bottom: var(--sp-4); }
+
+/* 2. GLOBAL SECTION SPACING — more “breathable” */
+section      { margin-block: clamp(2.5rem, 7vh, 4rem); }
+section h2   { margin-bottom: var(--sp-5); }
+
+/* 3. GRID GAPS — extra air between cards */
+.tech-grid,
+.services-grid,
+.process-timeline,
+.resources-links {
+  gap: calc(var(--sp-6) * 1.2); /* 20 % wider than before */
+}
+
+/* 4. Footer — lighter top margin */
+footer { margin-top: var(--sp-7); }
+
+/* 5. Mobile fine-tune */
+@media (max-width: 600px) {
+  .hero           { max-height: 65vh; padding-block: 2.5rem; }
+  .hero h2        { font-size: var(--fs-500); }
+  .hero-subtitle  { font-size: var(--fs-100); }
+}
