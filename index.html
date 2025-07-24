@@ -2,55 +2,54 @@
 <html lang="en" itemscope itemtype="https://schema.org/Organization">
 <head>
   <!-- =========================================================
-       SolaRé — Premium Solar Energy SolutionsFull HTML)
-       Built with best-in-class accessibility, performance,
-       and conversion practice by reference to Stripe, Apple,
-       SunPower, and leading Awwwards-level agencies.
+       SolaRé — Premium Solar Energy SolutionsComplete Build)
+       • Best-practice SEO, accessibility, performance
+       • Clean, modular sections ready for style.css, animation.css, premium.js
        ========================================================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- SEO & Social -->
   <title>SolaRé – Premium Solar Energy Solutions | Islamabad, Pakistan</title>
-  <meta name="description" content="Go solar with Pakistan’s #1 trusted installer. Tier-1 panels, transparent pricing, 5-year workmanship warranty, and 24/7 smart monitoring." />
-  <meta name="keywords" content="Solar, Islamabad solar, Pakistan net metering, hybrid inverter, solar financing" />
+  <meta name="description" content="Go solar with Pakistan’s #1 trusted installer. Tier-1 panels, transparent pricing, financing, and 5-year workmanship warranty. Get your free quote now." />
   <link rel="canonical" href="https://solare.com" />
 
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://solare.com" />
-  <meta property="og:title"       content="SolaRé – Premium Solar Energy Solutions" />
-  <meta property="og:description" content="Tier-1 panels, best warranties, flexible financing. Get your free solar quote today." />
-  <meta property="og:image"       content="https://solare.com/og-image.jpg" />
-  <meta name="twitter:card"       content="summary_large_image" />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type"  content="website" />
+  <meta property="og:url"   content="https://solare.com" />
+  <meta property="og:title" content="SolaRé – Premium Solar Energy Solutions" />
+  <meta property="og:description" content="Tier-1 panels, financing, and industry-leading warranties for homes and businesses in Pakistan." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Assets -->
-  <link rel="preload" href="style.css" as="style" />
-  <link rel="preload" href="animation.css" as="style" />
-  <link rel="preload" href="premium.js" as="script" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-qX…(hash)…" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
+
+  <!-- Core Styles -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="animation.css" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <meta name="theme-color" content="#fdcb00" />
 </head>
 
 <body>
-  <!-- Skip-link for accessibility -->
+  <!-- Skip link -->
   <a href="#main-content" class="sr-only focusable">Skip to main content</a>
 
-  <!-- =========  Header  ========= -->
-  <header role="banner">
+  <!-- ================= HEADER ================= -->
+  <header>
     <div class="logo-container">
-      <img src="Black Red Simple Y2K Streetwear Logo_20250706_161342_0000.png"
-           alt="SolaRé logo"
-           width="110" height="110" class="logo-img" loading="eager" />
+      <img src="Black Red Simple Y2K Streetwear Logo_20250706_161342_0000.png" alt="SolaRé logo" class="logo-img" width="110" height="110" />
       <h1 class="brand-title">SolaRé</h1>
       <p class="brand-subtitle">Premium Solar Energy Solutions</p>
     </div>
 
-    <nav role="navigation" aria-label="Primary navigation">
+    <nav aria-label="Primary navigation">
       <a href="#technology">Technology</a>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
@@ -62,194 +61,151 @@
     </nav>
   </header>
 
-  <!-- =========  Main  ========= -->
+  <!-- ================= MAIN ================= -->
   <main id="main-content">
-    <!-- Hero -->
+    <!-- ========== Hero Section ========== -->
     <section class="hero animate-on-scroll" aria-labelledby="hero-heading">
+      <!-- Background hero image -->
+      <picture>
+        <source srcset="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80" media="(min-width: 800px)">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=960&q=80"
+             alt="SolaRé rooftop installation at sunset"
+             class="hero-bg" loading="eager" width="1600" height="900" />
+      </picture>
+
       <div class="hero-content">
         <h2 id="hero-heading">Premium Solar for a Brighter Future</h2>
         <p class="hero-subtitle">
-          Power your home or business with Pakistan’s most trusted solar installers.
-          Complete peace of mind, transparent pricing, and the industry’s best warranties.
+          Power your home or business with Pakistan’s most trusted solar installers.<br />
+          Transparent pricing, flexible financing, industry-leading warranties.
         </p>
 
         <div class="hero-stats">
-          <div><strong class="stat-number" data-unit="+">2,100</strong><span>successful installs</span></div>
-          <div><strong class="stat-number" data-unit="MW+">15</strong><span>solar deployed</span></div>
-          <div><strong>25YR</strong><span>panel & inverter warranties</span></div>
+          <div class="stat">
+            <strong class="stat-number" data-unit="+">2,100</strong>
+            <span class="stat-label">Installs</span>
+          </div>
+          <div class="stat">
+            <strong class="stat-number" data-unit="MW+">15</strong>
+            <span class="stat-label">Solar Deployed</span>
+          </div>
+          <div class="stat">
+            <strong>25YR</strong>
+            <span class="stat-label">Panel &amp; Inverter Warranty</span>
+          </div>
         </div>
 
         <div class="hero-cta">
           <a class="cta-btn primary" href="#contact"><i class="fas fa-calculator"></i>Get a Free Quote</a>
           <a class="cta-btn secondary" href="https://wa.me/923390015006" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i>WhatsApp Us</a>
         </div>
-
-        <p class="disclaimer">*Free consultation • No obligation • Response within 24 h</p>
+        <p class="disclaimer">*Free consultation&nbsp;&nbsp;•&nbsp;&nbsp;No obligation&nbsp;&nbsp;•&nbsp;&nbsp;Reply within 24 h</p>
       </div>
     </section>
 
-    <!-- Technology -->
+    <!-- ========== Technology ========== -->
     <section id="technology" class="animate-on-scroll" aria-labelledby="technology-heading">
       <h2 id="technology-heading">Smart. Safe. Future-Proofed.</h2>
       <div class="tech-grid">
-        <article>
-          <i class="fas fa-solar-panel tech-icon"></i>
-          <h3>Tier-1 Solar Panels</h3>
-          <p>High-efficiency modules from JA, Jinko & Longi — engineered for Pakistan’s environment.</p>
-        </article>
-        <article>
-          <i class="fas fa-bolt tech-icon"></i>
-          <h3>Next-Gen Inverters</h3>
-          <p>Hybrid & on-grid inverters (Huawei, Fronius) with 10-year standard warranties.</p>
-        </article>
-        <article>
-          <i class="fas fa-battery-full tech-icon"></i>
-          <h3>Battery Storage & Backup</h3>
-          <p>Up to 40 kWh lithium solutions — power through outages and maximize self-consumption.</p>
-        </article>
-        <article>
-          <i class="fas fa-mobile-alt tech-icon"></i>
-          <h3>Smart Monitoring</h3>
-          <p>Real-time production analytics on web & mobile. Custom savings milestones delivered to you.</p>
-        </article>
+        <article><i class="fas fa-solar-panel tech-icon"></i><h3>Tier-1 Solar Panels</h3><p>JA Solar, Jinko Solar &amp; Longi modules — up to 22.3 % efficiency and 25-year performance warranties.</p></article>
+        <article><i class="fas fa-bolt tech-icon"></i><h3>Hybrid Inverters</h3><p>Huawei, Fronius &amp; Growatt inverters with 10-year standard warranties and 99 % efficiency.</p></article>
+        <article><i class="fas fa-battery-full tech-icon"></i><h3>Battery Storage</h3><p>LiFePO<span style="vertical-align:sub;font-size:85%">4</span> storage up to 40 kWh — seamless backup in load-shedding.</p></article>
+        <article><i class="fas fa-mobile-alt tech-icon"></i><h3>Smart Monitoring</h3><p>24 / 7 production analytics, custom alerts and live savings on iOS, Android &amp; web.</p></article>
       </div>
     </section>
 
-    <!-- Services -->
+    <!-- ========== Services ========== -->
     <section id="services" class="animate-on-scroll" aria-labelledby="services-heading">
       <h2 id="services-heading">Our Solar Solutions</h2>
       <div class="services-grid">
-        <article>
-          <i class="fas fa-home service-icon"></i>
-          <h3>Home Solar</h3>
-          <ul>
-            <li>Custom rooftop & carport design</li>
-            <li>Grid-tied & hybrid with net metering</li>
-            <li>Flexible financing options</li>
-          </ul>
-        </article>
-        <article>
-          <i class="fas fa-industry service-icon"></i>
-          <h3>Commercial Solar</h3>
-          <ul>
-            <li>ROI & savings analysis</li>
-            <li>Industrial, offices & schools</li>
-            <li>Scale up to 500 kW+</li>
-          </ul>
-        </article>
-        <article>
-          <i class="fas fa-seedling service-icon"></i>
-          <h3>Battery / Off-Grid</h3>
-          <ul>
-            <li>Seamless load-shedding protection</li>
-            <li>Rural & remote site installs</li>
-            <li>Pro-grade system monitoring</li>
-          </ul>
-        </article>
+        <article><i class="fas fa-home service-icon"></i><h3>Home Solar</h3><ul><li>Custom rooftop &amp; carport</li><li>Grid-tied &amp; hybrid</li><li>Net-metering handled</li></ul></article>
+        <article><i class="fas fa-industry service-icon"></i><h3>Commercial Solar</h3><ul><li>ROI analysis</li><li>Scale to 500 kW+</li><li>Tax incentives guidance</li></ul></article>
+        <article><i class="fas fa-seedling service-icon"></i><h3>Hybrid / Off-Grid</h3><ul><li>Battery integration</li><li>Remote/rural installs</li><li>Pro-grade monitoring</li></ul></article>
       </div>
     </section>
 
-    <!-- Process -->
+    <!-- ========== Process ========== -->
     <section id="process" class="animate-on-scroll" aria-labelledby="process-heading">
       <h2 id="process-heading">How SolaRé Works</h2>
       <ol class="process-timeline">
-        <li><h3>Consult & Design</h3><p>Free energy audit and site survey — receive an honest, tailored proposal.</p></li>
-        <li><h3>Install & Activate</h3><p>Turnkey, certified installation by our own in-house engineers.</p></li>
-        <li><h3>Monitor & Save</h3><p>24/7 performance tracking and live support keep your savings optimized.</p></li>
+        <li><h3>Consult &amp; Design</h3><p>Free energy audit and site survey. Get a tailored proposal within 24 hours.</p></li>
+        <li><h3>Install &amp; Activate</h3><p>Certified in-house engineers complete turnkey install in 1-3 days.</p></li>
+        <li><h3>Monitor &amp; Save</h3><p>24 / 7 performance tracking and live support keep your savings optimized.</p></li>
       </ol>
     </section>
 
-    <!-- Financing -->
+    <!-- ========== Financing ========== -->
     <section id="financing" class="animate-on-scroll" aria-labelledby="financing-heading">
-      <h2 id="financing-heading">Flexible Financing & Payment Plans</h2>
-      <p>
-        No up-front cash? No problem. SolaRé partners with leading Islamic and conventional banks to offer easy installment plans.<br />
-        <strong>0% markup plans for up to 12 months available.</strong>
-      </p>
+      <h2 id="financing-heading">Flexible Financing &amp; Payment Plans</h2>
+      <p>No up-front cash? SolaRé partners with leading Islamic and conventional banks.<br /><strong>0 % markup plans up to 12 months.</strong></p>
     </section>
 
-    <!-- Monitoring -->
+    <!-- ========== Monitoring & Maintenance ========== -->
     <section id="monitoring" class="animate-on-scroll" aria-labelledby="monitoring-heading">
-      <h2 id="monitoring-heading">Always-On Monitoring & Support</h2>
-      <p>SolaRé systems include lifetime remote monitoring, free annual service visits, and priority hotline access.</p>
+      <h2 id="monitoring-heading">Always-On Monitoring &amp; Support</h2>
+      <p>Lifetime remote monitoring, free annual maintenance visit and 24 / 7 hotline.</p>
     </section>
 
-    <!-- Impact -->
+    <!-- ========== Impact ========== -->
     <section id="impact" class="animate-on-scroll" aria-labelledby="impact-heading">
       <h2 id="impact-heading">Your Switch to Solar, Our Planet’s Gain</h2>
-      <p>
-        In 2024 alone, SolaRé customers offset
-        <span class="impact-highlight">13,000,000 kg+</span> of CO₂ — equal to planting
-        <span class="impact-highlight">320,000</span> trees.
-      </p>
+      <p>In 2024, SolaRé customers offset <span class="impact-highlight">13 000 000 kg</span> of CO₂ — equal to planting <span class="impact-highlight">320 000</span> trees.</p>
     </section>
 
-    <!-- About -->
+    <!-- ========== About ========== -->
     <section id="about" class="animate-on-scroll" aria-labelledby="about-heading">
       <h2 id="about-heading">A Trusted Name in Solar</h2>
       <div class="about-columns">
         <div>
           <h3>Who We Are</h3>
-          <p>
-            Founded by engineers, SolaRé brings reliable, professional solar to every home and business in Islamabad.<br />
-            <strong>ISO 9001 Certified, SECP Registered, APSEA & PEC Member.</strong>
-          </p>
+          <p>Founded by engineers, SolaRé delivers reliable, professional solar to Islamabad.<br /><strong>ISO 9001, SECP, APSEA & PEC.</strong></p>
           <ul>
             <li>250+ 5-star Google reviews</li>
-            <li>Pakistan Solar Award 2023 — Best Residential Installer</li>
-            <li>100% NEPRA & AEDB compliance</li>
+            <li>Pakistan Solar Award 2023</li>
+            <li>100 % AEDB / NEPRA compliance</li>
           </ul>
         </div>
         <div>
-          <h3>Our Story</h3>
-          <p>We believe in energy independence, transparency, and supporting Pakistani families with lasting solutions.</p>
+          <h3>Our Mission</h3>
+          <p>Energy independence, transparent pricing and unwavering support for Pakistani families.</p>
           <a href="#contact" class="cta-btn">Speak to an Engineer</a>
         </div>
       </div>
     </section>
 
-    <!-- Certifications -->
+    <!-- ========== Certifications ========== -->
     <section id="certifications" class="animate-on-scroll" aria-labelledby="cert-cert-heading">
-      <h2 id="cert-cert-heading">Certifications & Industry Recognition</h2>
+      <h2 id="cert-cert-heading">Certifications &amp; Recognition</h2>
       <ul class="cert-list">
-        <li><i class="fas fa-shield-alt"></i> ISO 9001:2015</li>
+        <li><i class="fas fa-shield-alt"></i> ISO 9001 : 2015</li>
         <li><i class="fas fa-check-circle"></i> AEDB / NEPRA Approved</li>
-        <li><i class="fas fa-trophy"></i> Pakistan Solar Award Winner</li>
-        <li><i class="fas fa-user-tie"></i> Engineers Board Licensed</li>
+        <li><i class="fas fa-trophy"></i> Pakistan Solar Award</li>
+        <li><i class="fas fa-user-tie"></i> PEC Licensed Engineers</li>
       </ul>
     </section>
 
-    <!-- FAQ -->
+    <!-- ========== FAQ ========== -->
     <section id="faq" class="animate-on-scroll" aria-labelledby="faq-heading">
       <h2 id="faq-heading">Frequently Asked Questions</h2>
       <div class="faq-container">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">How much can I actually save with SolaRé?<i class="fas fa-chevron-down"></i></button>
-          <div class="faq-answer">Most Islamabad homes cut their bills by 80–95%; savings depend on usage and system size — we’ll create a personal estimate.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Are SolaRé systems covered by warranty?<i class="fas fa-chevron-down"></i></button>
-          <div class="faq-answer">Yes! 25-year panel, 10-year inverter, and 5-year workmanship warranties — all manufacturer-backed.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Will my system work during load-shedding?<i class="fas fa-chevron-down"></i></button>
-          <div class="faq-answer">Hybrid and battery systems provide seamless power in outages. We’ll recommend the best option for you.</div>
-        </div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false">How much can I save?<i class="fas fa-chevron-down"></i></button><div class="faq-answer">Most Islamabad homes reduce bills by 80-95 %. We’ll calculate your exact savings.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false">What warranties do you provide?<i class="fas fa-chevron-down"></i></button><div class="faq-answer">25-year panel, 10-year inverter, 5-year workmanship warranties.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false">Do you handle net-metering paperwork?<i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes — 100 % paperwork &amp; inspections handled.</div></div>
       </div>
     </section>
 
-    <!-- Resources -->
+    <!-- ========== Resources ========== -->
     <section id="resources" class="animate-on-scroll" aria-labelledby="resources-heading">
       <h2 id="resources-heading">Solar Knowledge Center</h2>
       <ul class="resources-links">
         <li><a href="#">Solar 101: How Solar Works in Pakistan</a></li>
-        <li><a href="#">Complete Guide to Net Metering</a></li>
-        <li><a href="#">Understanding Inverter Technology</a></li>
-        <li><a href="#">Solar Financing Options in Pakistan</a></li>
+        <li><a href="#">Guide to Net Metering</a></li>
+        <li><a href="#">Inverter Technology Explained</a></li>
+        <li><a href="#">Solar Financing Options</a></li>
       </ul>
     </section>
 
-    <!-- Contact -->
+    <!-- ========== Contact ========== -->
     <section id="contact" class="animate-on-scroll" aria-labelledby="contact-heading">
       <h2 id="contact-heading">Request Your Free Solar Quotation</h2>
       <form class="contact-form" action="https://formspree.io/f/xdkzbbre" method="POST" novalidate>
@@ -258,23 +214,21 @@
           <div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label for="phone">Phone (11 digits)</label><input id="phone" name="phone" pattern="[0-9]{11}" placeholder="03390015006" required /></div>
-          <div class="form-group"><label for="bill">Monthly Bill (PKR)</label><input id="bill" name="bill" type="number" min="0" placeholder="12000" required /></div>
+          <div class="form-group"><label for="phone">Phone (11 digits)</label><input id="phone" name="phone" pattern="[0-9]{11}" placeholder="0339xxxxxxx" required /></div>
+          <div class="form-group"><label for="bill">Monthly Bill (PKR)</label><input id="bill" name="bill" type="number" min="0" required /></div>
         </div>
-        <div class="form-group">
-          <label for="message">How can we help? <span>(Quotation / Consultation)</span></label>
-          <textarea id="message" name="message" rows="3" required></textarea>
-        </div>
+        <div class="form-group"><label for="message">How can we help? <span>(Quotation / Consultation)</span></label><textarea id="message" name="message" rows="3" required></textarea></div>
         <button type="submit" class="cta-btn primary"><i class="fas fa-paper-plane"></i><span>Send My Request</span></button>
       </form>
       <div class="alternative-contact">
-        Prefer instant help? <a class="cta-btn secondary" href="https://wa.me/923390015006" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i>Chat on WhatsApp</a>
+        Prefer instant help?
+        <a class="cta-btn secondary" href="https://wa.me/923390015006" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i>Chat on WhatsApp</a>
       </div>
     </section>
   </main>
 
-  <!-- =========  Footer  ========= -->
-  <footer role="contentinfo">
+  <!-- ================= FOOTER ================= -->
+  <footer>
     <div class="footer-content">
       <div class="footer-brand">
         <img src="Black Red Simple Y2K Streetwear Logo_20250706_161342_0000.png" alt="SolaRé logo" width="60" height="60" />
@@ -282,24 +236,9 @@
         <div class="brand-desc">Premium Solar Energy Solutions</div>
       </div>
 
-      <div class="footer-links">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="#technology">Technology</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#financing">Financing</a></li>
-        </ul>
-      </div>
+      <div class="footer-links"><h4>Explore</h4><ul><li><a href="#technology">Technology</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#financing">Financing</a></li></ul></div>
 
-      <div class="footer-links">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#resources">Resources</a></li>
-        </ul>
-      </div>
+      <div class="footer-links"><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li><li><a href="#resources">Resources</a></li></ul></div>
 
       <address class="footer-contact">
         <h4>Contact</h4>
@@ -309,13 +248,10 @@
       </address>
     </div>
 
-    <div class="footer-bottom">
-      <p>&copy; 2025 SolaRé – Premium Solar Energy Solutions. All rights reserved.</p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2025 SolaRé — Premium Solar Energy Solutions. All rights reserved.</p></div>
   </footer>
 
-  <!-- =========  Scripts  ========= -->
+  <!-- ================= SCRIPTS ================= -->
   <script src="premium.js" defer></script>
 </body>
-                                                                       </html>
-          
+</html>
