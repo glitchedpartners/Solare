@@ -1,123 +1,144 @@
 /* =========================================================
-   SolaRé — animation.css  (Premium Production Build)
-   • Purpose-driven, performance-first motion
-   • IntersectionObserver-powered scroll-veal
-   • Micro-interactions for CTA buttons & cards
-   • Respects prefers-reduced-motion and accessibility
-   • Inspired by Stripe, Apple, Linear, and Awwwards-level motion systems
+   SolaRé — animation.css (Premium Production Build – July 2025)
+   • Performance-first, business-grade motion system
+   •, scroll-reveal, and micro-interaction layers
+   • Respects prefers-reduced-motion and accessibility best practices
+   • Inspired by Stripe, Apple, and Awwwards-level studios
+   • Designed to work with the companion style.css + premium.js
    ========================================================= */
 
 /* ---------- 1. KEYFRAMES ---------- */
-@keyframes fadeIn              {from{opacity:0}                           to{opacity:1}}
-@keyframes fadeInUp            {from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-@keyframes fadeInDown          {from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:none}}
-@keyframes fadeInLeft          {from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
-@keyframes fadeInRight         {from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:none}}
-@keyframes scaleIn             {from{opacity:0;transform:scale(.92)}       to{opacity:1;transform:scale(1)}}
-@keyframes gentleBounce        {0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
-@keyframes subtleGlow          {0%,100%{box-shadow:0 0 0 0 rgba(253,203,0,.4)}50%{box-shadow:0 0 24px 0 rgba(253,203,0,.25)}}
-@keyframes shimmer             {0%{background-position:-200px 0}          100%{background-position:calc(200px + 100%) 0}}
-@keyframes progressBar         {from{width:0}                             to{width:100%}}
-@keyframes countUp             {from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeIn        {from{opacity:0}                            to{opacity:1}}
+@keyframes fadeInUp      {from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none}}
+@keyframes fadeInDown    {from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:none}}
+@keyframes fadeInLeft    {from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+@keyframes fadeInRight   {from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:none}}
+@keyframes scaleIn       {from{opacity:0;transform:scale(.92)}       to{opacity:1;transform:scale(1)}}
+@keyframes gentleBounce  {0%{transform:translateY(0)}
+                          50%{transform:translateY(-6px)}
+                         100%{transform:translateY(0)}}
+@keyframes subtleGlow    {0%,100%{box-shadow:0 0 0 0 rgba(253,203,0,.4)}
+                          50%     {box-shadow:0 0 24px 0 rgba(253,203,0,.25)}}
+@keyframes shimmer       {0%{background-position:-200px 0}
+                         100%{background-position:calc(200px + 100%) 0}}
+@keyframes progressBar   {from{width:0} to{width:100%}}
+@keyframes countUp       {from{opacity:0;transform:translateY(20px)}
+                           to{opacity:1;transform:none}}
 
-/* ---------- 2. GLOBAL REVEAL ---------- */
+/* ---------- 2. SCROLL-REVEAL BASE ---------- */
 .animate-on-scroll{
   opacity:0;
   transform:translateY(40px);
   transition:opacity .7s cubic-bezier(.25,.46,.45,.94),
-             transform .7s cubic-bezier(.25,.46,.45,.94)
+             transform .7s cubic-bezier(.25,.46,.45,.94);
 }
-.in-view{opacity:1!important;transform:none!important}
+.in-view{
+  opacity:1 !important;
+  transform:none !important;
+}
 
-/* ---------- 3. ENTRANCE MOTION ---------- */
-header          {animation:fadeInDown .8s cubic-bezier(.25,.46,.45,.94) .1s forwards}
-.logo-container {animation:scaleIn   .6s cubic-bezier(.25,.46,.45,.94) .3s forwards}
-.logo-img       {animation:scaleIn   .6s cubic-bezier(.25,.46,.45,.94) .4s forwards}
-.brand-title    {animation:fadeInUp  .6s cubic-bezier(.25,.46,.45,.94) .6s forwards}
-.brand-subtitle {animation:fadeInUp  .6s cubic-bezier(.25,.46,.45,.94) .75s forwards}
-nav             {animation:fadeIn    .7s cubic-bezier(.25,.46,.45,.94) .9s forwards}
+/* ---------- 3. ENTRANCE SEQUENCE ---------- */
+/* Header */
+header          {animation:fadeInDown .8s cubic-bezier(.25,.46,.45,.94) .1s both}
+.logo-container {animation:scaleIn   .6s cubic-bezier(.25,.46,.45,.94) .3s both}
+.logo-img       {animation:scaleIn   .6s cubic-bezier(.25,.46,.45,.94) .4s both}
+.brand-title    {animation:fadeInUp  .6s cubic-bezier(.25,.46,.45,.94) .6s both}
+.brand-subtitle {animation:fadeInUp  .6s cubic-bezier(.25,.46,.45,.94) .75s both}
+nav             {animation:fadeIn    .7s cubic-bezier(.25,.46,.45,.94) .9s both}
+
+nav a{
+  animation:fadeInUp .4s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+nav a:nth-child(1){animation-delay:1.1s}
+nav a:nth-child(2){animation-delay:1.2s}
+nav a:nth-child(3){animation-delay:1.3s}
+nav a:nth-child(4){animation-delay:1.4s}
+nav a:nth-child(5){animation-delay:1.5s}
+nav a:nth-child(6){animation-delay:1.6s}
+nav a:nth-child(7){animation-delay:1.7s}
+nav a:nth-child(8){animation-delay:1.8s}
 
 /* Hero */
-.hero           {animation:fadeInUp .9s cubic-bezier(.25,.46,.45,.94) .2s forwards}
-.hero h2        {animation:fadeInUp .8s cubic-bezier(.25,.46,.45,.94) .4s forwards}
-.hero-subtitle  {animation:fadeInUp .8s cubic-bezier(.25,.46,.45,.94) .6s forwards}
-.hero-stats     {animation:fadeInUp .8s cubic-bezier(.25,.46,.45,.94) .8s forwards}
-.stat-number    {animation:countUp  1s  cubic-bezier(.25,.46,.45,.94) 1s  forwards}
-.hero-cta       {animation:fadeInUp .8s cubic-bezier(.25,.46,.45,.94) 1.2s forwards}
+.hero           {animation:fadeInUp .9s cubic-bezier(.25,.46,.45,.94) .2s  both}
+.hero h2        {animation:fadeInUp .8s cubic-bezier(.25,.46,.45,.94) .4s  both}
+.hero-subtitle  {animation:fadeInUp .8s cubic-bezier(.25,.46,.45,.94) .6s  both}
+.hero-stats     {animation:fadeInUp .8s cubic-bezier(.25,.46,.45,.94) .8s  both}
+.stat-number    {animation:countUp  1s  cubic-bezier(.25,.46,.45,.94) 1.2s both}
+.hero-cta       {animation:fadeInUp .8s cubic-bezier(.25,.46,.45,.94) 1.3s both}
 
-/* Technology grid */
-.tech-grid article{animation:fadeInUp .7s ease forwards}
+/* ---------- 4. SECTION STAGGERS ---------- */
+.tech-grid article,
+.services-grid article,
+.process-timeline li,
+.cert-list li,
+.faq-item,
+.resources-links a{
+  animation:fadeInUp .7s ease both;
+}
+
 .tech-grid article:nth-child(1){animation-delay:.2s}
 .tech-grid article:nth-child(2){animation-delay:.35s}
 .tech-grid article:nth-child(3){animation-delay:.5s}
 .tech-grid article:nth-child(4){animation-delay:.65s}
 
-/* Services */
-.services-grid article{animation:fadeInUp .7s ease forwards}
 .services-grid article:nth-child(1){animation-delay:.3s}
 .services-grid article:nth-child(2){animation-delay:.45s}
 .services-grid article:nth-child(3){animation-delay:.6s}
 
-/* Process timeline */
-.process-timeline li{animation:fadeInUp .7s ease forwards}
 .process-timeline li:nth-child(1){animation-delay:.25s}
 .process-timeline li:nth-child(2){animation-delay:.4s}
 .process-timeline li:nth-child(3){animation-delay:.55s}
 
-/* Certifications list (alternating slide) */
-.cert-list li{animation:fadeInLeft .6s ease forwards}
-.cert-list li:nth-child(even){animation-name:fadeInRight}
+.cert-list li:nth-child(odd) {animation-delay:.2s; animation-name:fadeInLeft}
+.cert-list li:nth-child(even){animation-delay:.3s; animation-name:fadeInRight}
 
-/* FAQ items */
-.faq-item{animation:fadeInUp .6s ease forwards}
+.faq-item:nth-child(1){animation-delay:.2s}
+.faq-item:nth-child(2){animation-delay:.3s}
+.faq-item:nth-child(3){animation-delay:.4s}
 
-/* Resources links */
-.resources-links a{animation:fadeInUp .6s ease forwards}
-
-/* ---------- 4. INTERACTION ANIMATIONS ---------- */
+/* ---------- 5. MICRO-INTERACTIONS ---------- */
+/* Buttons */
 .cta-btn:hover{
   animation:gentleBounce .6s cubic-bezier(.68,-.55,.265,1.55);
-  transform-origin:center
+  transform-origin:center;
 }
-.cta-btn.primary:hover{animation:subtleGlow 2s ease-in-out infinite}
-
-/* Icons enlarge gently on card hover */
+.cta-btn.primary:hover{
+  animation:subtleGlow 2s ease-in-out infinite;
+}
+/* Card icons */
 .tech-grid article:hover .tech-icon,
 .services-grid article:hover .service-icon{
   transform:scale(1.1) rotate(3deg);
-  transition:transform .25s
+  transition:transform .25s;
 }
-
 /* FAQ arrow */
 .faq-question i{transition:transform .25s}
 .faq-item.active .faq-question i{transform:rotate(180deg)}
 
-/* Progress utilities */
+/* Progress & shimmer utilities */
 .progress-bar{animation:progressBar 2s ease-out forwards}
-
-/* Skeleton shimmer */
-.skeleton{
-  background:linear-gradient(
-    90deg,
-    var(--gray-100) 25%,
-    var(--gray-200) 37%,
-    var(--gray-100) 63%
-  );
+.shimmer{
+  background:linear-gradient(90deg,var(--gray-100) 25%,var(--gray-200) 37%,var(--gray-100) 63%);
   background-size:400% 100%;
-  animation:shimmer 1.4s ease infinite
+  animation:shimmer 1.4s ease infinite;
 }
 
-/* ---------- 5. REDUCED MOTION & ACCESSIBILITY ---------- */
-@media (prefers-reduced-motion:reduce){
+/* ---------- 6. PREFER-REDUCED-MOTION ---------- */
+@media (prefers-reduced-motion: reduce){
   *,*::before,*::after{
-    animation-duration:0.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:0.01ms!important
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
   }
+  .animate-on-scroll{opacity:1 !important;transform:none !important}
 }
 
-/* ---------- 6. MOBILE TWEAKS ---------- */
+/* ---------- 7. MOBILE PERFORMANCE TWEAKS ---------- */
 @media (max-width:768px){
-  .animate-on-scroll{transition-duration:.5s}
+  /* Shorter durations on handheld to boost perceived speed */
   *{scroll-behavior:smooth}
+  .animate-on-scroll{transition-duration:.5s}
+  .cta-btn:hover{animation:none}
+  .tech-grid article:hover,
+  .services-grid article:hover{transform:none;box-shadow:var(--shadow-sm)}
 }
