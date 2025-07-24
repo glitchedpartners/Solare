@@ -1,78 +1,69 @@
 /* =========================================================
-   SolaRé — premium.js  (Production Build - v2.0)
+   SolaRé — premium.js  (Production Build - July 2025)
    ---------------------------------------------------------
-   • Smooth scrolling & active-link highlight
-   • Stickyheader hide / reveal on scroll
-   • IntersectionObserver scroll-reveal system
-   • Animated number counters
-   • FAQ accordion with ARIA support
-   • Real-time form validation (+ accessible error feedback)
-   • Floating WhatsApp quick-contact button
-   • Reduced-motion & keyboard-focus helpers
-   • Layout-shift prevention for lazy images
-   • Built and tested for evergreen browsers
+   •  Smooth scrolling + active-link highlight
+ •  Sticky-header hide / reveal on scroll
+   •  IntersectionObserver scroll-reveal system
+   •  Animated number counters
+   •  FAQ accordion with ARIA support
+   •  Accessible, real-time form validation
+   •  Floating WhatsApp quick-contact button
+   •  Reduced-motion & keyboard-focus helpers
+   •  Layout-shift prevention for lazy images
    ========================================================= */
 
 (() => {
-  /* ---------- Shorthand helpers ---------- */
-  const $  = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ---------- Helpers ---------- */
+  const $  = (q, c = document) => c.querySelector(q);
+  const $$ = (q, c = document) => [...c.querySelectorAll(q)];
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- 1. Smooth-scroll & nav highlight ---------- */
-  const navLinks  = $$('header nav a');
-  const sections  = $$('main section[id]');
-  const OFFSET_Y  = window.innerHeight * 0.33; // highlight threshold
+  /* ---------- 1. Smooth scroll + nav highlight ---------- */
+  const navLinks = $$('header nav a');
+  const sections = $$('main section[id]');
+  const OFFSET   = window.innerHeight * 0.33;
 
-  navLinks.forEach(a => {
-    a.addEventListener('click', e => {
-      const target = $(a.hash);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
+  navLinks.forEach(a => a.addEventListener('click', e => {
+    const target = $(a.hash);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }));
 
-  const highlightNav = () => {
-    const pos = window.scrollY + OFFSET_Y;
+  const highlight = () => {
+    const pos = window.scrollY + OFFSET;
     sections.forEach(sec => {
-      const inView = pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight;
-      navLinks.forEach(l => l.classList.toggle('active', inView && l.hash === `#${sec.id}`));
+      const active = pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight;
+      navLinks.forEach(l => l.classList.toggle('active', active && l.hash === `#${sec.id}`));
     });
   };
-  highlightNav();
-  window.addEventListener('scroll', highlightNav);
+  highlight();
+  addEventListener('scroll', highlight, { passive: true });
 
   /* ---------- 2. Sticky-header hide / reveal ---------- */
   const header = $('header');
-  let prevY = window.scrollY;
-  window.addEventListener(
-    'scroll',
-    () => {
-      const curY = window.scrollY;
-      const down = curY > prevY && curY > 120;
-      header.classList.toggle('header-hide', down);
-      prevY = curY;
-    },
-    { passive: true }
-  );
+  let prevY = scrollY;
+  addEventListener('scroll', () => {
+    const curY = scrollY;
+    header.classList.toggle('header-hide', curY > prevY && curY > 120);
+    prevY = curY;
+  }, { passive: true });
 
-  /* ---------- 3. Focus-outline (keyboard only) ---------- */
-  document.addEventListener('keydown', e => e.key === 'Tab' && document.body.classList.add('show-focus-outline'));
-  document.addEventListener('mousedown', () => document.body.classList.remove('show-focus-outline'));
+  /* ---------- 3. Keyboard focus outline ---------- */
+  addEventListener('keydown', e => e.key === 'Tab' && document.body.classList.add('show-focus-outline'));
+  addEventListener('mousedown', () => document.body.classList.remove('show-focus-outline'));
 
-  /* ---------- 4. Scroll-reveal (IntersectionObserver) ---------- */
-  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+  /* ---------- 4. Scroll-reveal ---------- */
+  if (!reducedMotion && 'IntersectionObserver' in window) {
     const revealIO = new IntersectionObserver(
-      entries =>
-        entries.forEach(({ isIntersecting, target }) => {
-          if (isIntersecting) {
-            target.classList.add('in-view');
-            revealIO.unobserve(target);
-          }
-        }),
-      { threshold: 0.15 }
+      es => es.forEach(({ isIntersecting, target }) => {
+        if (isIntersecting) {
+          target.classList.add('in-view');
+          revealIO.unobserve(target);
+        }
+      }),
+      { threshold: .15 }
     );
     $$('.animate-on-scroll').forEach(el => revealIO.observe(el));
   } else {
@@ -80,85 +71,79 @@
   }
 
   /* ---------- 5. Animated counters ---------- */
-  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-    const counterIO = new IntersectionObserver(
-      entries =>
-        entries.forEach(({ isIntersecting, target }) => {
-          if (!isIntersecting) return;
+  if (!reducedMotion && 'IntersectionObserver' in window) {
+    const countIO = new IntersectionObserver(
+      es => es.forEach(({ isIntersecting, target }) => {
+        if (!isIntersecting) return;
 
-          const unit = target.dataset.unit || '';
-          const end  = parseInt(target.textContent.replace(/\D/g, ''), 10);
-          const dur  = 1500;
-          let startTime;
+        const unit = target.dataset.unit || '';
+        const end  = parseInt(target.textContent.replace(/\D/g, ''), 10) || 0;
+        const dur  = 1500;
+        let start;
 
-          const animate = ts => {
-            startTime ??= ts;
-            const progress = Math.min((ts - startTime) / dur, 1);
-            target.textContent = `${Math.floor(progress * end).toLocaleString()}${unit}`;
-            if (progress < 1) requestAnimationFrame(animate);
-          };
-          requestAnimationFrame(animate);
-          counterIO.unobserve(target);
-        }),
+        const tick = ts => {
+          start ??= ts;
+          const p = Math.min((ts - start) / dur, 1);
+          target.textContent = `${Math.floor(p * end).toLocaleString()}${unit}`;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        countIO.unobserve(target);
+      }),
       { threshold: 1 }
     );
-    $$('.stat-number').forEach(el => counterIO.observe(el));
+    $$('.stat-number').forEach(el => countIO.observe(el));
   }
 
   /* ---------- 6. FAQ accordion ---------- */
   $$('.faq-item').forEach(item => {
     const btn = $('.faq-question', item);
-    const ans = $('.faq-answer',   item);
+    const ans = $('.faq-answer', item);
     btn.addEventListener('click', () => {
       const open = item.classList.toggle('active');
       btn.setAttribute('aria-expanded', open);
-      if (!prefersReducedMotion) ans.style.animation = open ? 'slideUp .3s ease forwards' : '';
+      if (!reducedMotion) ans.style.animation = open ? 'slideUp .3s ease forwards' : '';
     });
   });
 
   /* ---------- 7. Form validation ---------- */
   const form = $('.contact-form');
   if (form) {
-    const requiredInputs = $$('[required]', form);
+    const fields = $$('[required]', form);
 
-    /* inline validation */
-    requiredInputs.forEach(inp =>
-      inp.addEventListener('input', () => {
-        inp.classList.remove('invalid');
-        inp.nextElementSibling?.classList?.contains('error-message') && inp.nextElementSibling.remove();
+    fields.forEach(f =>
+      f.addEventListener('input', () => {
+        f.classList.remove('invalid');
+        f.nextElementSibling?.classList.contains('error-message') && f.nextElementSibling.remove();
       })
     );
 
     form.addEventListener('submit', e => {
-      let valid = true;
-
-      requiredInputs.forEach(inp => {
-        if (!inp.value.trim()) {
-          valid = false;
-          if (!inp.classList.contains('invalid')) {
-            inp.classList.add('invalid');
+      let ok = true;
+      fields.forEach(f => {
+        if (!f.value.trim()) {
+          ok = false;
+          if (!f.classList.contains('invalid')) {
+            f.classList.add('invalid');
             const msg = document.createElement('div');
             msg.className = 'error-message';
             msg.textContent = 'Required field';
-            inp.after(msg);
+            f.after(msg);
           }
         }
       });
-
-      if (!valid) {
+      if (!ok) {
         e.preventDefault();
-        const firstInvalid = $('.invalid', form);
-        firstInvalid && firstInvalid.focus();
+        $('.invalid', form)?.focus();
       } else {
-        /* optional: disable submit to prevent double sends */
         form.querySelector('button[type="submit"]').disabled = true;
-        announce('Your message is being sent. Thank you!');
+        announce('Thank you! Sending your request…');
       }
     });
   }
 
-  /* ---------- 8. Floating WhatsApp button ---------- */
-  const createWhatsAppFloat = () => {
+  /* ---------- 8. Floating WhatsApp ---------- */
+  const addWhatsApp = () => {
     if ($('.whatsapp-float')) return;
     const btn = document.createElement('a');
     btn.href = 'https://wa.me/923390015006';
@@ -166,39 +151,42 @@
     btn.target = '_blank';
     btn.rel = 'noopener';
     btn.innerHTML = '<i class="fab fa-whatsapp"></i>';
-    btn.style.cssText =
-      'position:fixed;bottom:1.5rem;right:1.5rem;display:flex;align-items:center;justify-content:center;' +
-      'width:3.5rem;height:3.5rem;background:#25d366;color:#fff;border-radius:50%;box-shadow:0 8px 14px rgba(0,0,0,.15);' +
-      'font-size:1.7rem;z-index:60;transition:transform .25s ease;overflow:hidden';
+    btn.style.cssText = `
+      position:fixed;bottom:1.5rem;right:1.5rem;
+      width:3.5rem;height:3.5rem;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      background:#25d366;color:#fff;font-size:1.7rem;
+      box-shadow:0 8px 14px rgb(0 0 0 / .15);z-index:90;
+      transition:transform .25s ease
+    `;
     btn.addEventListener('mouseenter', () => (btn.style.transform = 'scale(1.05)'));
     btn.addEventListener('mouseleave', () => (btn.style.transform = ''));
-    document.body.appendChild(btn);
+    document.body.append(btn);
   };
-  createWhatsAppFloat();
+  addWhatsApp();
 
-  /* ---------- 9. Image layout-shift prevention ---------- */
+  /* ---------- 9. Prevent CLS on lazy images ---------- */
   $$('img[loading="lazy"]').forEach(img => {
-    if (!img.width || !img.height) {
-      const ratio = (img.naturalHeight || 200) / (img.naturalWidth || 400);
-      img.width  = 400;
-      img.height = Math.round(400 * ratio);
-    }
+    if (img.width && img.height) return;
+    const ratio = (img.naturalHeight || 200) / (img.naturalWidth || 400);
+    img.width  = 400;
+    img.height = Math.round(400 * ratio);
   });
 
-  /* ---------- 10. Accessibility announcer ---------- */
-  function announce(msg) {
+  /* ---------- 10. ARIA live announcer ---------- */
+  function announce(text) {
     let live = $('#aria-live');
     if (!live) {
-      live = document.createElement('div');
-      live.id = 'aria-live';
-      live.className = 'sr-only';
-      live.setAttribute('aria-live', 'polite');
+      live = Object.assign(document.createElement('div'), {
+        id: 'aria-live',
+        className: 'sr-only',
+        ariaLive: 'polite'
+      });
       document.body.append(live);
     }
-    live.textContent = msg;
+    live.textContent = text;
   }
 
-  /* ---------- 11. Reduced-motion: remove scroll-reveal (if already in DOM) ---------- */
-  if (prefersReducedMotion) $$('.animate-on-scroll').forEach(el => el.classList.add('in-view'));
+  /* ---------- 11. Reduced-motion immediate reveal ---------- */
+  if (reducedMotion) $$('.animate-on-scroll').forEach(el => el.classList.add('in-view'));
 })();
-                   
